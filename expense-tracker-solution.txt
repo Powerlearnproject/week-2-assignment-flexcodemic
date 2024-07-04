@@ -1,0 +1,116 @@
+Write an SQL query to retrieve all data points (columns) from the "Expenses" table.
+
+SELECT *
+FROM expenses;
+
+Modify your query to select only specific columns relevant to your analysis. For example, you might choose "date," "category," and "amount" to analyze spending patterns by category and date.
+
+SELECT date, amount
+FROM expenses;
+
+Write a query to retrieve expenses charged between a specific date range (e.g., January 1, 2021, to December 15, 2024).
+Remember to use the appropriate data type for the "date" column when specifying the date range in your query.
+
+SELECT *
+FROM expenses
+WHERE date 
+BETWEEN '2021-01-01' AND '2024-10-15'
+
+
+Write a query to find all expenses belonging to a specific category (e.g., "Entertainment").
+
+SELECT *
+FROM expenses
+WHERE category = 'Entertainment';
+
+
+Find expenses with an amount greater than a certain value (e.g., $50).
+
+SELECT *
+FROM expenses
+WHERE amount > 50;
+
+
+Refine your query to find expenses that meet multiple criteria. For example, you might search for expenses greater than $75 AND belonging to the "Food" category.
+
+SELECT *
+FROM expenses
+	WHERE amount > 75 
+	AND category = 'Transportation';
+
+
+Modify your query to find expenses belonging to one category or another (e.g., "Transportation" OR "Groceries").
+
+SELECT *
+FROM expenses
+	WHERE category = 'Gloceries' 
+    OR amount < 50;
+
+
+Write a query to display expenses unrelated to a specific category (e.g., "Rent").
+
+SELECT *
+FROM expenses
+WHERE NOT amount > 50;
+
+
+Write a query to display all expenses sorted by amount in a specific order (e.g., descending order for highest to lowest spending).
+
+SELECT *
+FROM expenses
+ORDER BY amount DESC;
+
+
+Modify your query to sort expenses based on multiple columns. For example, you might sort first by date (descending order) and then by category (ascending order) to see recent spending trends by category.
+
+SELECT *
+FROM expenses
+ORDER BY date DESC, category ASC;
+
+
+**4.1 Write SQL commands to achieve the following:**
+
+* We don't have a table for income yet. Create a table named "Income" with columns for:
+  
+income_id (INT) - Primary Key (auto-increment)
+
+amount (DECIMAL(10,2)) - NOT NULL
+
+date (DATE) - NOT NULL
+
+source (VARCHAR(50)) - NOT NULL
+
+
+-- create another table "Income"
+CREATE TABLE Income (
+	income_id INT PRIMARY KEY AUTO_INCREMENT,
+    amount DECIMAL(10, 2) NOT NULL,
+    date DATE NOT NULL,
+    source VARCHAR(50) NOT NULL
+);
+
+
+**4.2 After creating the "Income" table, you realize you also want to track the income category "source" (e.g., "Salary," "Freelance Work").** 
+
+* Use ALTER TABLE to add a new column named "category" of type VARCHAR(50).
+
+ALTER TABLE income
+ADD COLUMN category VARCHAR(50);
+
+
+**4.3 Let's say you decide tracking the income source isn't necessary for now.**
+
+* Use ALTER TABLE again to remove the "source" column from the "Income" table.
+
+ALTER TABLE income
+DROP COLUMN source
+
+
+Imagine you no longer need the "Income" table entirely. Experiment how to Use DROP TABLE to permanently remove it from your database.
+```
+DROP TABLE income;
+
+
+
+
+
